@@ -12,8 +12,8 @@ APP_SECRET = ""
 ## DeepAI API key
 AI_KEY = ""
 
-errCount = 0
 def main(args):
+    errCount = 0
     print(".", end="")
     # Funny messages
     join = ("",
@@ -22,7 +22,28 @@ def main(args):
             ", the perfect Geometry Dash level",
             " is the peak of CSGD",
             " is a megacollab",
-            " funny")
+            " funny",
+            " and its trollfaces",
+            " is the longest",
+            " the hardest demon",
+            " is my spirit animal",
+            " is superior to Freedom08",
+            " is Pennutoh's worst nightmare",
+            " should be Earth's president",
+            " is incredibly sus, but actually not at all",
+            " will bring world peace",
+            " should replace Stereo Madness",
+            " may be harder than Back on Track",
+            " makes the insane demon an extremely insane demon",
+            " is Czechoslovakia's best achievemnt",
+            " will rule over the world",
+            " is the new hip level everyone's talking about",
+            " must be featured on Viprin's channel",
+            ", the level that gives RobTop nightmares",
+            " makes 2.2 obsolete",
+            " is more valuable than gold",
+            " is what gdtwt should be talking about",
+            " is rapidly approaching your location")
     
     while True:
         # DeepAI request
@@ -40,11 +61,14 @@ def main(args):
         lastSentence = story.replace(".","%",fstopCount-1)
         cutoff = story[:lastSentence.index(".")+1]
         
+        if random.randint(1,10) == 2:
+            cutoff = translators.google(cutoff,from_language="en", to_language="cs").replace("Svoboda69","Freedom69")
+        
         # Sending tweet
         try:
             print(".", end="")
             # Auto-translation to Czech. Only send cutoff if you don't want translation!
-            t.statuses.update(status=translators.google(cutoff,from_language="en", to_language="cs").replace("Svoboda69","Freedom69"))
+            t.statuses.update(status=cutoff)
             print("Tweet sent!")
             break
         except Exception as twitError:
