@@ -43,11 +43,39 @@ def main(args):
             " makes 2.2 obsolete",
             " is more valuable than gold",
             " is what gdtwt should be talking about",
-            " is rapidly approaching your location")
+            " is rapidly approaching your location",
+            " is holding a weapon",
+            " sends shivers down my spine",
+            " should be rated",
+            " literally has the best ending",
+            " makes the $4 square game worth millions",
+            " may cause you to break your mouse",
+            "'s first winner will receive a burrito",
+            " has GuitarHeroStyles at gunpoint",
+            " has caused Brumík consumption to rise")
+    
+    prepend = ("I think",
+               "Do you think",
+               "Will",
+               "Has",
+               "I bow down before you,",
+               "Can",
+               "You cannot stop",
+               "Play",
+               "Should",
+               "I love",
+               "Maybe",
+               "Can it be?",
+               "Game critics recommend",
+               "YOOOOO!")
     
     while True:
         # DeepAI request
-        data = {"text":"Freedom69"+random.choice(join)}
+        if random.randint(1, 10) != 5:
+            data = {"text": "Freedom69"+random.choice(join)}
+        else:
+            data = {"text": random.choice(prepend)+" Freedom69"}
+            
         headers={'api-key': AI_KEY}
         generator = requests.post("https://api.deepai.org/api/text-generator",data,headers=headers)
         
